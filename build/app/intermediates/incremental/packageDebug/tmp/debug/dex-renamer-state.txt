@@ -1,0 +1,4 @@
+#Thu Nov 05 10:27:31 CAT 2020
+base.0=/home/telesphore/flutterapp/flutter-01/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
