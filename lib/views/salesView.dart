@@ -14,6 +14,7 @@ import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:yegobox/viewModel/dataModel.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:expandable/expandable.dart';
 
 class Sales extends StatefulWidget {
   @override
@@ -131,8 +132,12 @@ class _SalesState extends State<Sales> {
                 child: Container(
               child: Column(
                 children: [
-                  _salesCard("1", 4.0, 2.0, 0.3, 20.0),
-                  _paymentType(30.0, 3, 0.45, 2.2)
+                  _salesCard("1", 4.0, 2.0, 0.3, 20.0, 'DAILY GROSS SALES'),
+                  _paymentType(30.0, 3, 0.45, 2.2),
+                  _topItemMenu(),
+                  _itemDetails('Benz', 'heloo benz', 2.3),
+                  _categoryMenu(),
+                  _categoryDetails('uncategorized', 'Benz', 2.3),
                 ],
               ),
             )),
@@ -142,8 +147,12 @@ class _SalesState extends State<Sales> {
                 child: Container(
               child: Column(
                 children: [
-                  _salesCard("1", 4.0, 2.0, 0.3, 20.0),
-                  _paymentType(30.0, 3, 0.45, 2.2)
+                  _salesCard("1", 4.0, 2.0, 0.3, 20.0, 'WEEKLY GROSS SALES'),
+                  _paymentType(30.0, 3, 0.45, 2.2),
+                  _topItemMenu(),
+                  _itemDetails('Benz', 'heloo benz', 2.3),
+                  _categoryMenu(),
+                  _categoryDetails('uncategorized', 'Benz', 2.3),
                 ],
               ),
             )),
@@ -153,8 +162,12 @@ class _SalesState extends State<Sales> {
                 child: Container(
               child: Column(
                 children: [
-                  _salesCard("1", 4.0, 2.0, 0.3, 20.0),
-                  _paymentType(30.0, 3, 0.45, 2.2)
+                  _salesCard("1", 4.0, 2.0, 0.3, 20.0, 'MONTHLY GROSS SALES'),
+                  _paymentType(30.0, 3, 0.45, 2.2),
+                  _topItemMenu(),
+                  _itemDetails('Benz', 'heloo benz', 2.3),
+                  _categoryMenu(),
+                  _categoryDetails('uncategorized', 'Benz', 2.3),
                 ],
               ),
             )),
@@ -164,8 +177,12 @@ class _SalesState extends State<Sales> {
                 child: Container(
               child: Column(
                 children: [
-                  _salesCard("1", 4.0, 2.0, 0.3, 20.0),
-                  _paymentType(30.0, 3, 0.45, 2.2)
+                  _salesCard("1", 4.0, 2.0, 0.3, 20.0, 'SEMESTER GROSS SALES'),
+                  _paymentType(30.0, 3, 0.45, 2.2),
+                  _topItemMenu(),
+                  _itemDetails('Benz', 'heloo benz', 2.3),
+                  _categoryMenu(),
+                  _categoryDetails('uncategorized', 'Benz', 2.3),
                 ],
               ),
             )),
@@ -175,8 +192,12 @@ class _SalesState extends State<Sales> {
                 child: Container(
               child: Column(
                 children: [
-                  _salesCard("1", 4.0, 2.0, 0.3, 20.0),
-                  _paymentType(30.0, 3, 0.45, 2.2)
+                  _salesCard("1", 4.0, 2.0, 0.3, 20.0, 'YEARLY GROSS SALES'),
+                  _paymentType(30.0, 3, 0.45, 2.2),
+                  _topItemMenu(),
+                  _itemDetails('Benz', 'heloo benz', 2.3),
+                  _categoryMenu(),
+                  _categoryDetails('uncategorized', 'Benz', 2.3),
                 ],
               ),
             )),
@@ -187,7 +208,7 @@ class _SalesState extends State<Sales> {
   }
 
   Widget _salesCard(String grossSale, double averageSale, double refunds,
-      double discount, double today) {
+      double discount, double today, String title) {
     return SingleChildScrollView(
       child: Container(
         child: Padding(
@@ -324,7 +345,7 @@ class _SalesState extends State<Sales> {
                 children: [
                   Expanded(
                     flex: 4,
-                    child: Text("DAILY GROSS SALES",
+                    child: Text(title,
                         style: GoogleFonts.lato(
                             textStyle: TextStyle(
                                 fontSize: 12.0, color: Colors.grey[800]))),
@@ -429,7 +450,9 @@ class _SalesState extends State<Sales> {
                   ),
                 ],
               ),
-              SizedBox(height: 30.0,),
+              SizedBox(
+                height: 30.0,
+              ),
               Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -535,6 +558,330 @@ class _SalesState extends State<Sales> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  // TOP item Widget goes here!
+  // start with Menu
+  Widget _topItemMenu() {
+    return SingleChildScrollView(
+      child: Container(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Text("TOP ITEMS",
+                      style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11.0,
+                              color: Colors.grey[700]))),
+                ),
+                Expanded(
+                    flex: 1,
+                    child: Icon(
+                      Entypo.dots_three_horizontal,
+                      color: Color(0xFF1E96F0),
+                    )),
+              ],
+            ),
+            // Adding Gross button here
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: RaisedButton(
+                      onPressed: null,
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(0.0),
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      color: Color(0xFF2C2C32),
+                      child: Text('GROSS',
+                          style: GoogleFonts.rubik(
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold))),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: OutlineButton(
+                      onPressed: null,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(0.0),
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      color: Colors.black,
+                      child: Text('Count',
+                          style: GoogleFonts.rubik(
+                              textStyle: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontWeight: FontWeight.bold))),
+                    )),
+              ],
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+
+//  Items details widget here!
+  Widget _itemDetails(String name, String details, double cost) {
+    return SingleChildScrollView(
+      child: Container(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(children: [
+            Divider(
+              color: Colors.grey[300],
+            ),
+            ExpandablePanel(
+              iconPlacement: ExpandablePanelIconPlacement.left,
+              header: Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Text(name,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Colors.grey[800]))),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text("FRw ${cost}",
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Colors.grey[800]))),
+                    ),
+                  ],
+                ),
+              ),
+              expanded: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Divider(
+                        color: Colors.grey[300],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Text(details,
+                                softWrap: true,
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.grey[800]))),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Text("FRw ${cost}",
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.grey[800]))),
+                          ),
+                        ],
+                      ),
+                      Divider(
+                        color: Colors.grey[300],
+                      ),
+                    ],
+                  )),
+              tapHeaderToExpand: true,
+            ),
+            // Adding Gross button here
+          ]),
+        ),
+      ),
+    );
+  }
+
+  // Category widget
+  Widget _categoryMenu() {
+    return SingleChildScrollView(
+      child: Container(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(children: [
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 4,
+                  child: Text("TOP CATEGORIES",
+                      style: GoogleFonts.rubik(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11.0,
+                              color: Colors.grey[700]))),
+                ),
+                Expanded(
+                    flex: 1,
+                    child: Icon(
+                      Entypo.dots_three_horizontal,
+                      color: Color(0xFF1E96F0),
+                    )),
+              ],
+            ),
+            // Adding Gross button here
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                    flex: 1,
+                    child: RaisedButton(
+                      onPressed: null,
+                      elevation: 0.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(0.0),
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      color: Color(0xFF2C2C32),
+                      child: Text('GROSS',
+                          style: GoogleFonts.rubik(
+                              textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold))),
+                    )),
+                Expanded(
+                    flex: 1,
+                    child: OutlineButton(
+                      onPressed: null,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(0.0),
+                        ),
+                      ),
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      color: Colors.black,
+                      child: Text('Count',
+                          style: GoogleFonts.rubik(
+                              textStyle: TextStyle(
+                                  color: Colors.grey[900],
+                                  fontWeight: FontWeight.bold))),
+                    )),
+              ],
+            ),
+          ]),
+        ),
+      ),
+    );
+  }
+
+// category details
+//  Items details widget here!
+  Widget _categoryDetails(String name, String details, double cost) {
+    return SingleChildScrollView(
+      child: Container(
+        child: Padding(
+          padding: EdgeInsets.all(20.0),
+          child: Column(children: [
+            Divider(
+              color: Colors.grey[300],
+            ),
+            ExpandablePanel(
+              iconPlacement: ExpandablePanelIconPlacement.left,
+              header: Padding(
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Text(name,
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Colors.grey[800]))),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text("FRw ${cost}",
+                          style: GoogleFonts.lato(
+                              textStyle: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14.0,
+                                  color: Colors.grey[800]))),
+                    ),
+                  ],
+                ),
+              ),
+              expanded: Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Divider(
+                        color: Colors.grey[300],
+                      ),
+                      Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            flex: 2,
+                            child: Text(details,
+                                softWrap: true,
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.grey[800]))),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Text("FRw ${cost}",
+                                style: GoogleFonts.lato(
+                                    textStyle: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 14.0,
+                                        color: Colors.grey[800]))),
+                          ),
+                        ],
+                      ),
+                      Divider(
+                        color: Colors.grey[300],
+                      ),
+                    ],
+                  )),
+              tapHeaderToExpand: true,
+            ),
+            // Adding Gross button here
+          ]),
         ),
       ),
     );

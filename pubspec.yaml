@@ -32,7 +32,7 @@ dependencies:
   tabbar: ^0.1.1
   intl: ^0.16.1
   jiffy: ^3.0.1
-
+  expandable: ^4.1.4
   syncfusion_flutter_charts: ^18.3.44
 
 
